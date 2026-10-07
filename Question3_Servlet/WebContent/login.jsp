@@ -44,8 +44,6 @@
             <button type="submit" class="btn btn-primary btn-block">Login</button>
         </div>
     </form>
-
-    <p class="hint login-hint">Demo account (see README): <strong>admin</strong> / <strong>Admin@123</strong></p>
 </section>
 
 <script>
