@@ -1,0 +1,10 @@
+<%-- footer.jspf - shared bottom part of every page --%>
+</main>
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 Student Admission Portal &mdash; Web Technology Assignment II (Question 3: Servlet, JSP &amp; JDBC)</p>
+        <p>Developed by <strong>Monika M</strong> &middot; Roll No. 24CS122 &middot; B.Tech CSE</p>
+    </div>
+</footer>
+</body>
+</html>

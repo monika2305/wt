@@ -1,0 +1,11 @@
+# Security for the uploads folder:
+# 1. Never run uploaded files as PHP/scripts, even if one slipped through.
+# 2. Do not show a directory listing of all uploaded files.
+Options -Indexes -ExecCGI
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .phps .cgi .pl .py
+<FilesMatch "\.(php|phtml|php\d|phps|cgi|pl|py|sh|htaccess)$">
+    Require all denied
+</FilesMatch>
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>

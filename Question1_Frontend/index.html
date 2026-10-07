@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic HTML5 document setup -->
+    <meta charset="UTF-8">
+    <!-- viewport meta tag makes the page scale correctly on mobile phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | Student Admission Portal</title>
+    <!-- External stylesheet (all styling lives in style.css) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== Page header with portal name and navigation ===== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <span class="brand-logo" aria-hidden="true">SP</span>
+                <div>
+                    <h1 class="brand-title">Student Admission Portal</h1>
+                    <p class="brand-subtitle">Admission &amp; Profile Management</p>
+                </div>
+            </div>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html" class="active">Register</a>
+                <a href="#guidelines">Guidelines</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Success message box: hidden until the form passes validation -->
+        <div id="successBox" class="alert alert-success" role="status" hidden></div>
+
+        <div class="layout">
+
+            <!-- ===== Registration form card ===== -->
+            <section class="card form-card">
+                <h2 class="card-title">New Student Registration</h2>
+                <p class="card-subtitle">Fields marked <span class="required">*</span> are mandatory.</p>
+
+                <!--
+                    novalidate turns OFF the browser's default validation popups,
+                    so that our own JavaScript (validation.js) controls all messages.
+                -->
+                <form id="registrationForm" novalidate>
+
+                    <!-- Student name -->
+                    <div class="form-group">
+                        <label for="studentName">Student Name <span class="required">*</span></label>
+                        <input type="text" id="studentName" name="studentName"
+                               placeholder="e.g. Monika M" maxlength="50"
+                               autocomplete="name" aria-describedby="studentNameError">
+                        <span class="error-message" id="studentNameError"></span>
+                    </div>
+
+                    <!-- Roll number -->
+                    <div class="form-group">
+                        <label for="rollNumber">Roll Number <span class="required">*</span></label>
+                        <input type="text" id="rollNumber" name="rollNumber"
+                               placeholder="e.g. 24CS122" maxlength="15"
+                               aria-describedby="rollNumberHint rollNumberError">
+                        <small class="hint" id="rollNumberHint">5–15 letters/digits, must contain at least one digit.</small>
+                        <span class="error-message" id="rollNumberError"></span>
+                    </div>
+
+                    <!-- Email: type="email" shows the right keyboard on mobile -->
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email"
+                               placeholder="e.g. monikam232007@gmail.com" maxlength="100"
+                               autocomplete="email" aria-describedby="emailError">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <!-- Password + Confirm Password side by side on wide screens -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <input type="password" id="password" name="password"
+                                   autocomplete="new-password" aria-describedby="passwordRules passwordError">
+                            <span class="error-message" id="passwordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                   autocomplete="new-password" aria-describedby="confirmPasswordError">
+                            <span class="error-message" id="confirmPasswordError"></span>
+                        </div>
+                    </div>
+
+                    <!-- Live password rule checklist (updated by validation.js while typing) -->
+                    <ul class="password-rules" id="passwordRules" aria-label="Password requirements">
+                        <li data-rule="length">At least 8 characters</li>
+                        <li data-rule="upper">One uppercase letter (A–Z)</li>
+                        <li data-rule="lower">One lowercase letter (a–z)</li>
+                        <li data-rule="number">One number (0–9)</li>
+                        <li data-rule="special">One special character (e.g. @ # $ !)</li>
+                    </ul>
+
+                    <!-- Course dropdown -->
+                    <div class="form-group">
+                        <label for="course">Course <span class="required">*</span></label>
+                        <select id="course" name="course" aria-describedby="courseError">
+                            <option value="">-- Select your course --</option>
+                            <option value="B.Sc Computer Science">B.Sc Computer Science</option>
+                            <option value="BCA">BCA</option>
+                            <option value="B.Tech CSE">B.Tech CSE</option>
+                            <option value="B.Tech IT">B.Tech IT</option>
+                            <option value="B.Com">B.Com</option>
+                            <option value="BBA">BBA</option>
+                            <option value="MCA">MCA</option>
+                        </select>
+                        <span class="error-message" id="courseError"></span>
+                    </div>
+
+                    <!-- File upload: accept attribute filters the file picker; JS re-checks type and size -->
+                    <div class="form-group">
+                        <label for="document">Profile Photo / ID Proof <span class="required">*</span></label>
+                        <input type="file" id="document" name="document"
+                               accept=".jpg,.jpeg,.png,.pdf" aria-describedby="documentHint documentError">
+                        <small class="hint" id="documentHint">Allowed: JPG, PNG or PDF. Maximum size: 2 MB.</small>
+                        <span class="error-message" id="documentError"></span>
+                    </div>
+
+                    <!-- Submit and Reset buttons -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- ===== Side panel with guidelines ===== -->
+            <aside class="card info-card" id="guidelines">
+                <h2 class="card-title">Registration Guidelines</h2>
+                <ul class="info-list">
+                    <li>Enter your name exactly as it appears on your marksheet.</li>
+                    <li>Your roll number is printed on your admission letter.</li>
+                    <li>Use an email address you check regularly.</li>
+                    <li>Choose a strong password and keep it private.</li>
+                    <li>Upload a clear photo or a scanned ID proof (max 2 MB).</li>
+                </ul>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Student Admission Portal &mdash; Web Technology Assignment II (Question 1)</p>
+            <p>Developed by <strong>Monika M</strong> &middot; Roll No. 24CS122 &middot; B.Tech CSE</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript loaded at the end so the form elements already exist -->
+    <script src="validation.js"></script>
+</body>
+</html>

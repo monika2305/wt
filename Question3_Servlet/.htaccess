@@ -1,0 +1,5 @@
+# This folder lives inside C:\xampp\htdocs, so Apache (port 80) could serve
+# the Java source code and WEB-INF\web.xml as plain files.
+# The Servlet project is meant to run on Tomcat (port 8080) only,
+# so Apache is told to refuse every request for this folder.
+Require all denied

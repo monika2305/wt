@@ -1,0 +1,41 @@
+<%--
+    header.jspf - shared top part of every page.
+    Included with <%@ include file="..." %> (copied into the page at compile time),
+    so the including page must declare the "c" taglib and set pageTitle.
+    Kept inside WEB-INF so it cannot be opened directly in the browser.
+--%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><c:out value="${pageTitle}"/> | Student Profile Portal</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="brand">
+            <span class="brand-logo" aria-hidden="true">SP</span>
+            <div>
+                <h1 class="brand-title">Student Profile Portal</h1>
+                <p class="brand-subtitle">Student Profiles &amp; Documents</p>
+            </div>
+        </div>
+
+        <%-- Conditional navigation: different links for logged-in and anonymous users --%>
+        <nav class="main-nav" aria-label="Main navigation">
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/students">Students</a>
+                    <span class="nav-user">&#128100; <c:out value="${sessionScope.user.fullName}"/></span>
+                    <a href="${pageContext.request.contextPath}/logout" class="nav-logout">Logout</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login">Login</a>
+                </c:otherwise>
+            </c:choose>
+        </nav>
+    </div>
+</header>
+<main class="container">

@@ -1,0 +1,46 @@
+# ============================================================
+#  .gitignore - files that should NOT be uploaded to GitHub
+# ============================================================
+
+# ---------- Runtime uploads (Question 2) ----------
+# Student photos/documents are user data, not source code.
+# Keep the folder itself and its security .htaccess file.
+Question2_PHP/uploads/*
+!Question2_PHP/uploads/.htaccess
+
+# ---------- Local credentials ----------
+# Optional override for real MySQL passwords (see Question2_PHP/db.php)
+Question2_PHP/db.local.php
+*.env
+
+# ---------- Java build output (Question 3) ----------
+# Re-created by build.bat
+Question3_Servlet/WebContent/WEB-INF/classes/
+*.class
+*.war
+
+# ---------- Third-party jars (Question 3) ----------
+# Downloaded/copied as described in README.md (keeps the repository small).
+Question3_Servlet/WebContent/WEB-INF/lib/*.jar
+
+# ---------- IDE / editor files ----------
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+nbproject/
+bin/
+out/
+build/
+target/
+
+# ---------- Operating system / temporary files ----------
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+*.tmp
+*.bak
+*~
