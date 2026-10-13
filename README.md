@@ -3,7 +3,7 @@
 **Student details:**
 - Name: Monika M
 - Roll Number: 24CS122
-- Course: B.Tech CSE
+- Course: B.E CSE
 
 ## About the Project
 
